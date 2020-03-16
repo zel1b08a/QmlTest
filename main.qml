@@ -27,24 +27,36 @@ Window {
 
             ListView {
                 anchors.fill: parent
-                model: cfg.banks
-                delegate: BankView {}
+                model: ObjectModel {
+                    BankView {
+                        bankId: 0
+                        coefficientsNumber: 2
+                    }
+                    BankView {
+                        bankId: 1
+                        coefficientsNumber: 12
+                    }
+                    BankView {
+                        bankId: 2
+                        coefficientsNumber: 4
+                    }
+                }
             }
         }
-    }
 
-    Rectangle {
-        width: 200
-        Layout.fillHeight: true
-        color: "#721f0f"
+        Rectangle {
+            width: 200
+            Layout.fillHeight: true
+            color: "#721f0f"
 
-        Button {
-            width: 150
-            height: 60
-            text: qsTr("make request")
-            anchors.centerIn: parent
-            onClicked: {
-                client.makeRequest()
+            Button {
+                width: 150
+                height: 60
+                text: qsTr("make request")
+                anchors.centerIn: parent
+                onClicked: {
+                    client.makeRequest()
+                }
             }
         }
     }

@@ -37,16 +37,14 @@ RowLayout {
             ListView {
                 id: regs
                 clip: true
-                height: 10 * 36
+                height: coefficientsNumber * 36
                 width: 320
                 Layout.alignment: Qt.AlignCenter
                 Layout.maximumHeight: 5 * 36
-                model: BankModel {
-                    bank: model.bank
-                }
+                model: coefficientsNumber
                 delegate: Row {
                     TextField {
-                        text: coefficient
+                        text: index
                         implicitWidth: regs.width
                         height: 36
                         background: Rectangle {
