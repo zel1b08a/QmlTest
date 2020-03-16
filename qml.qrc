@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>BankView.qml</file>
+        <file>BankViewHeader.qml</file>
+        <file>BankViewDescription.qml</file>
+    </qresource>
+</RCC>
