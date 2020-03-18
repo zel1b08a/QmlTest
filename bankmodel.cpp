@@ -1,7 +1,7 @@
 #include "bankmodel.h"
 #include "bank.h"
 
-BankModel::BankModel(QObject *parent)
+BankModel::BankModel(QObject* parent)
     : QAbstractListModel(parent)
     , _bank(nullptr)
 {
