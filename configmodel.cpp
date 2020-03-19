@@ -118,3 +118,11 @@ void ConfigModel::setModelUp(const QVector<QVector<quint32> >& config)
             _root_item->childAt(_root_item->childrenCount() - 1)->appendChild(new CoefficientItem(coefficient));
     }
 }
+
+
+QHash<int, QByteArray> ConfigModel::roleNames() const
+{
+    return {
+        {CoefficientRole, "coefficient"},
+    };
+}

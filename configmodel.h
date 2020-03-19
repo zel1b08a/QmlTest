@@ -30,6 +30,8 @@ public:
 
     void setModelUp(const QVector<QVector<quint32> >& config);
 
+    QHash<int, QByteArray> roleNames() const override;
+
 private:
     CoefficientItem* _root_item;
 };
