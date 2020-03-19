@@ -26,6 +26,7 @@ Window {
             Layout.alignment: Qt.AlignCenter
 
             ListView {
+                id: bank_list
                 anchors.fill: parent
                 model: DelegateModel {
                     model: cfg

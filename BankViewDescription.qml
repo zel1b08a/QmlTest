@@ -10,7 +10,6 @@ RowLayout {
     clip: true
 
     property bool isOpened: false
-    property alias rootIndex: local_model.rootIndex
 
     Behavior on isOpened {
         NumberAnimation {
@@ -44,8 +43,7 @@ RowLayout {
                 Layout.alignment: Qt.AlignCenter
                 Layout.maximumHeight: 5 * 36
                 model: DelegateModel {
-                    id: local_model
-                    model: rootIndex
+                    model: model.index(index, 0, model.modelIndex(index))
                     delegate: Row {
                         TextField {
                             text: coefficient

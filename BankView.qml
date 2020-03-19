@@ -26,7 +26,6 @@ Rectangle {
             id: description
             isOpened: checker.checked
             width: bank_view.width
-            rootIndex: cfg.index(index, 0)
         }
     }
 
