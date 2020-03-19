@@ -10,7 +10,25 @@ RowLayout {
     clip: true
 
     property bool isOpened: false
-    property alias coefficients : regs.model
+    property alias bankIndex: coefs.rootIndex
+
+    DelegateModel {
+        id: coefs
+        model: cfg
+
+        delegate: Row {
+
+            TextField {
+                text: "#" + model.coefficient
+                implicitWidth: regs.width
+                height: 36
+                background: Rectangle {
+                    anchors.fill: parent
+                    color: "#F2F402"
+                }
+            }
+        }
+    }
 
     Behavior on isOpened {
         NumberAnimation {
@@ -46,17 +64,7 @@ RowLayout {
                 width: 320
                 Layout.alignment: Qt.AlignCenter
                 Layout.maximumHeight: 5 * 36
-                delegate: Row {
-                    TextField {
-                        text: "#" + coefficient
-                        implicitWidth: regs.width
-                        height: 36
-                        background: Rectangle {
-                            anchors.fill: parent
-                            color: "#F2F402"
-                        }
-                    }
-                }
+                model: coefs
             }
         }
     }
