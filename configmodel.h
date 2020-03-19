@@ -1,23 +1,35 @@
 #pragma once
 
-#include <QObject>
+#include <QAbstractItemModel>
+#include <QModelIndex>
+#include <QVector>
+#include <QtGlobal>
 
-class Bank;
+class CoefficientItem;
 
-class ConfigModel : public QObject
+class ConfigModel : public QAbstractItemModel
 {
     Q_OBJECT
-    Q_PROPERTY(QList<Bank*> banks READ banks WRITE setBanks NOTIFY banksChanged)
+
+    enum { CoefficientRole = Qt::UserRole };
 
 public:
-    explicit ConfigModel(QList<Bank*> banks = QList<Bank*>(), QObject *parent = nullptr);
+    explicit ConfigModel(const QVector<QVector<quint32>>& config, CoefficientItem* root = nullptr, QObject *parent = nullptr);
+    ~ConfigModel();
 
-    QList<Bank*> banks() const;
-    void setBanks(QList<Bank*> banks);
+    QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const override;
+    QModelIndex parent(const QModelIndex &index) const override;
 
-signals:
-    void banksChanged(QList<Bank*> banks);
+    int rowCount(const QModelIndex &parent = QModelIndex()) const override;
+    int columnCount(const QModelIndex &parent = QModelIndex()) const override;
+
+    QVariant data(const QModelIndex &index, int role = CoefficientRole) const override;
+    bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole) override;
+
+    Qt::ItemFlags flags(const QModelIndex& index) const override;
+
+    void setModelUp(const QVector<QVector<quint32> >& config);
 
 private:
-    QList<Bank*> _banks;
+    CoefficientItem* _root_item;
 };

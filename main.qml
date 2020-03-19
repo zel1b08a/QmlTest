@@ -3,7 +3,7 @@ import QtQuick.Window 2.2
 import QtQuick.Controls 2.2
 import QtQuick.Layouts 1.3
 import QtQml.Models 2.3
-import Config 1.0
+//import Config 1.0
 
 Window {
     visible: true
@@ -27,24 +27,25 @@ Window {
 
             ListView {
                 anchors.fill: parent
-                model: cfg.banks
-                delegate: BankView {}
+                model: DelegateModel {
+                    model: cfg
+                    delegate: BankView {}
+                }
             }
         }
-    }
+        Rectangle {
+            width: 200
+            Layout.fillHeight: true
+            color: "#721f0f"
 
-    Rectangle {
-        width: 200
-        Layout.fillHeight: true
-        color: "#721f0f"
-
-        Button {
-            width: 150
-            height: 60
-            text: qsTr("make request")
-            anchors.centerIn: parent
-            onClicked: {
-                client.makeRequest()
+            Button {
+                width: 150
+                height: 60
+                text: qsTr("make request")
+                anchors.centerIn: parent
+                onClicked: {
+                    client.makeRequest()
+                }
             }
         }
     }

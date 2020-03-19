@@ -4,5 +4,6 @@
         <file>BankView.qml</file>
         <file>BankViewHeader.qml</file>
         <file>BankViewDescription.qml</file>
+        <file>Empty.qml</file>
     </qresource>
 </RCC>

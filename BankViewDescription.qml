@@ -1,7 +1,8 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.2
 import QtQuick.Layouts 1.3
-import Config 1.0
+import QtQml.Models 2.3
+//import Config 1.0
 
 RowLayout {
     id: description
@@ -9,6 +10,7 @@ RowLayout {
     clip: true
 
     property bool isOpened: false
+    property alias rootIndex: local_model.rootIndex
 
     Behavior on isOpened {
         NumberAnimation {
@@ -41,17 +43,18 @@ RowLayout {
                 width: 320
                 Layout.alignment: Qt.AlignCenter
                 Layout.maximumHeight: 5 * 36
-                model: BankModel {
-                    bank: model.bank
-                }
-                delegate: Row {
-                    TextField {
-                        text: coefficient
-                        implicitWidth: regs.width
-                        height: 36
-                        background: Rectangle {
-                            anchors.fill: parent
-                            color: "#F2F402"
+                model: DelegateModel {
+                    id: local_model
+                    model: rootIndex
+                    delegate: Row {
+                        TextField {
+                            text: coefficient
+                            implicitWidth: regs.width
+                            height: 36
+                            background: Rectangle {
+                                anchors.fill: parent
+                                color: "#F2F402"
+                            }
                         }
                     }
                 }

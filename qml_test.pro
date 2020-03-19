@@ -4,17 +4,15 @@ CONFIG += c++11
 DEFINES += QT_DEPRECATED_WARNINGS
 
 HEADERS += \
-    bank.h \
-    bankmodel.h \
-    configmodel.h \
-    client.h
+    client.h \
+    coefficientitem.h \
+    configmodel.h
 
 SOURCES += \
-    bank.cpp \
-    bankmodel.cpp \
-    configmodel.cpp \
     main.cpp \
-    client.cpp
+    client.cpp \
+    coefficientitem.cpp \
+    configmodel.cpp
 
 RESOURCES += qml.qrc
 
