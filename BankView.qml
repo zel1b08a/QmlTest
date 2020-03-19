@@ -10,6 +10,8 @@ Rectangle {
     height: bank_view_column.height
     color: "#946782"
 
+    property var bankIndex
+
     Column {
         id: bank_view_column
         spacing: 0
@@ -26,6 +28,10 @@ Rectangle {
             id: description
             isOpened: checker.checked
             width: bank_view.width
+            coefficients: DelegateModel {
+                model: cfg
+                rootIndex: bankIndex
+            }
         }
     }
 

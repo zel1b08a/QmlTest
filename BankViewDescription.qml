@@ -10,6 +10,7 @@ RowLayout {
     clip: true
 
     property bool isOpened: false
+    property alias coefficients : regs.model
 
     Behavior on isOpened {
         NumberAnimation {
@@ -33,6 +34,9 @@ RowLayout {
                 height: 200
                 color: "#62f9c1"
                 Layout.alignment: Qt.AlignCenter
+                Label { //to debug
+                    text: "#" + regs.count
+                }
             }
 
             ListView {
@@ -42,17 +46,14 @@ RowLayout {
                 width: 320
                 Layout.alignment: Qt.AlignCenter
                 Layout.maximumHeight: 5 * 36
-                model: DelegateModel {
-                    model: model.index(index, 0, model.modelIndex(index))
-                    delegate: Row {
-                        TextField {
-                            text: coefficient
-                            implicitWidth: regs.width
-                            height: 36
-                            background: Rectangle {
-                                anchors.fill: parent
-                                color: "#F2F402"
-                            }
+                delegate: Row {
+                    TextField {
+                        text: "#" + coefficient
+                        implicitWidth: regs.width
+                        height: 36
+                        background: Rectangle {
+                            anchors.fill: parent
+                            color: "#F2F402"
                         }
                     }
                 }

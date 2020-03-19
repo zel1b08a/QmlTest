@@ -30,7 +30,9 @@ Window {
                 anchors.fill: parent
                 model: DelegateModel {
                     model: cfg
-                    delegate: BankView {}
+                    delegate: BankView {
+                        bankIndex: cfg.index(index, 0)
+                    }
                 }
             }
         }
