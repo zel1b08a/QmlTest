@@ -62,14 +62,7 @@ int ConfigModel::rowCount(const QModelIndex &index) const
 
 int ConfigModel::columnCount(const QModelIndex &index) const
 {
-<<<<<<< Updated upstream
-    Q_UNUSED(parent)
-=======
     Q_UNUSED(index);
-    if (!index.isValid())
-        return 0;
-
->>>>>>> Stashed changes
     return 1;
 }
 
