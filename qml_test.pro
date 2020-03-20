@@ -6,20 +6,20 @@ DEFINES += QT_DEPRECATED_WARNINGS
 HEADERS += \
     client.h \
     coefficientitem.h \
-    configmodel.h \
-    packetbuilderi.h \
-    packetbuilder.h \
-    packetmanager.h \
-    packetmanageri.h \
-    packetinfo.h
+    configmodel.h #\
+#    packetbuilderi.h \
+#    packetbuilder.h \
+#    packetmanager.h \
+#    packetmanageri.h \
+#    packetinfo.h
 
 SOURCES += \
     main.cpp \
     client.cpp \
     coefficientitem.cpp \
-    configmodel.cpp \
-    packetbuilder.cpp \
-    packetmanager.cpp
+    configmodel.cpp #\
+#    packetbuilder.cpp \
+#    packetmanager.cpp
 
 RESOURCES += qml.qrc
 
