@@ -3,7 +3,6 @@ import QtQuick.Window 2.2
 import QtQuick.Controls 2.2
 import QtQuick.Layouts 1.3
 import QtQml.Models 2.3
-//import Config 1.0
 
 Window {
     visible: true
@@ -29,9 +28,10 @@ Window {
                 id: bank_list
                 anchors.fill: parent
                 model: DelegateModel {
+                    id: bank_list_model
                     model: cfg
                     delegate: BankView {
-                        bankIndex: cfg.index(index, 0)
+                        bankIndex: bank_list_model.modelIndex(index)
                     }
                 }
             }

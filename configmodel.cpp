@@ -1,5 +1,8 @@
+#include <QDebug>
+
 #include "configmodel.h"
 #include "coefficientitem.h"
+
 
 ConfigModel::ConfigModel(const QVector<QVector<quint32> >& config, CoefficientItem* root, QObject *parent)
     : QAbstractItemModel(parent)
@@ -43,25 +46,30 @@ QModelIndex ConfigModel::parent(const QModelIndex &index) const
     return createIndex(parent_item->row(), 0, parent_item);
 }
 
-int ConfigModel::rowCount(const QModelIndex &parent) const
+int ConfigModel::rowCount(const QModelIndex &index) const
 {
-    if (parent.column() > 0)
+    if (index.column() > 0)
         return 0;
 
-    CoefficientItem* parent_item;
-    if (!parent.isValid())
-        parent_item = _root_item;
+    CoefficientItem* item;
+    if (!index.isValid())
+        item = _root_item;
     else
-        parent_item = static_cast<CoefficientItem*>(parent.internalPointer());
+        item = static_cast<CoefficientItem*>(index.internalPointer());
 
-    return parent_item->childrenCount();
+    return item->childrenCount();
 }
 
-int ConfigModel::columnCount(const QModelIndex &parent) const
+int ConfigModel::columnCount(const QModelIndex &index) const
 {
-    if (!parent.isValid())
-        return 1;
+<<<<<<< Updated upstream
+    Q_UNUSED(parent)
+=======
+    Q_UNUSED(index);
+    if (!index.isValid())
+        return 0;
 
+>>>>>>> Stashed changes
     return 1;
 }
 
@@ -106,6 +114,13 @@ Qt::ItemFlags ConfigModel::flags(const QModelIndex &index) const
     return Qt::ItemIsEditable | index.flags();
 }
 
+QHash<int, QByteArray> ConfigModel::roleNames() const
+{
+    return {
+        {CoefficientRole, "coefficient"},
+    };
+}
+
 void ConfigModel::setModelUp(const QVector<QVector<quint32> >& config)
 {
     if (!_root_item)
@@ -116,12 +131,4 @@ void ConfigModel::setModelUp(const QVector<QVector<quint32> >& config)
         foreach (const auto& coefficient, bank)
             _root_item->childAt(_root_item->childrenCount() - 1)->appendChild(new CoefficientItem(coefficient));
     }
-}
-
-
-QHash<int, QByteArray> ConfigModel::roleNames() const
-{
-    return {
-        {CoefficientRole, "coefficient"},
-    };
 }

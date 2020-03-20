@@ -2,7 +2,6 @@ import QtQuick 2.9
 import QtQuick.Controls 2.2
 import QtQuick.Layouts 1.3
 import QtQml.Models 2.3
-//import Config 1.0
 
 Rectangle {
     id: bank_view
@@ -10,7 +9,7 @@ Rectangle {
     height: bank_view_column.height
     color: "#946782"
 
-    property var bankIndex
+    property alias bankIndex: description.bankIndex
 
     Column {
         id: bank_view_column
@@ -28,7 +27,6 @@ Rectangle {
             id: description
             isOpened: checker.checked
             width: bank_view.width
-            bankIndex: bank_view.bankIndex
         }
     }
 

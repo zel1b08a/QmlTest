@@ -20,17 +20,16 @@ public:
     QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const override;
     QModelIndex parent(const QModelIndex &index) const override;
 
-    int rowCount(const QModelIndex &parent = QModelIndex()) const override;
-    int columnCount(const QModelIndex &parent = QModelIndex()) const override;
+    int rowCount(const QModelIndex &index = QModelIndex()) const override;
+    int columnCount(const QModelIndex &index = QModelIndex()) const override;
 
     QVariant data(const QModelIndex &index, int role = CoefficientRole) const override;
     bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole) override;
 
     Qt::ItemFlags flags(const QModelIndex& index) const override;
+    QHash<int, QByteArray> roleNames() const override;
 
     void setModelUp(const QVector<QVector<quint32> >& config);
-
-    QHash<int, QByteArray> roleNames() const override;
 
 private:
     CoefficientItem* _root_item;

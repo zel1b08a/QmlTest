@@ -13,14 +13,13 @@ int main(int argc, char *argv[])
 
     qRegisterMetaType<QAbstractSocket::SocketError>();
     qRegisterMetaType<QAbstractSocket::SocketState>();
-//    qmlRegisterType<ConfigModel>("Config", 1, 0, "ConfigModel");
 
     Client client;
     ConfigModel cfg(QVector<QVector<quint32>>({
-                                                  { 10, 12, 23, 34, 45 },
-                                                  { 10, 13, 23, 34 },
-                                                  { 10, 14 },
-                                                  { 10, 15, 23, 34, 45, 46 },
+                                                  { 10, 11, 12, 13, 14 },
+                                                  { 15, 16, 17, 18 },
+                                                  { 19, 20 },
+                                                  { 21, 22, 23, 24, 25, 26 },
                                               }));
 
     QQmlApplicationEngine engine;
