@@ -28,10 +28,7 @@ Rectangle {
             id: description
             isOpened: checker.checked
             width: bank_view.width
-            coefficients: DelegateModel {
-                model: cfg
-                rootIndex: bankIndex
-            }
+            bankIndex: bank_view.bankIndex
         }
     }
 

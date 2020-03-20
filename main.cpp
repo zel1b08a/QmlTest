@@ -18,9 +18,9 @@ int main(int argc, char *argv[])
     Client client;
     ConfigModel cfg(QVector<QVector<quint32>>({
                                                   { 10, 12, 23, 34, 45 },
-                                                  { 10, 12, 23, 34 },
-                                                  { 10, 12 },
-                                                  { 10, 12, 23, 34, 45, 46 },
+                                                  { 10, 13, 23, 34 },
+                                                  { 10, 14 },
+                                                  { 10, 15, 23, 34, 45, 46 },
                                               }));
 
     QQmlApplicationEngine engine;
